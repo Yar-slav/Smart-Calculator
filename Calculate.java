@@ -102,11 +102,11 @@ public class Calculate {
                         stack.push(number2.multiply(number1));
                         break;
                     case "/" :
-                        if(number1.equals("0")){
+                        if(!number1.equals(new BigInteger("0"))){
                             stack.push(number2.divide(number1));
                         } else {
                             System.out.println("Сan not be divided by zero");
-                            calculate();
+                            return calculate();
                         }
                         break;
                 }
