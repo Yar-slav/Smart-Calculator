@@ -11,14 +11,13 @@ class MainTest {
 
     @Test
     @ExpectSystemExit
-    void main() {
+    void main_StopProgramAndExit() {
         String input = "/exit";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-//        assertEquals(BigInteger.valueOf(88), lineActual);
         Main.main(null);
     }
 }
