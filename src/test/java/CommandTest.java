@@ -8,27 +8,27 @@ class CommandTest {
 
     @Test
     @ExpectSystemExit
-    void validCommandExit() {
+    void validCommand_ExitProgram_True() {
         Command command = new Command();
         command.validCommand("/exit");
     }
 
     @Test
-    void validCommandHelp() {
+    void validCommand_CallHelp_True() {
         Command command = new Command();
         boolean result = command.validCommand("/help");
         assertTrue(result);
     }
 
     @Test
-    void validCommandIncorrect() {
+    void validCommand_IncorrectRequest_True() {
         Command command = new Command();
-        boolean result = command.validCommand("/incorrect");
+        boolean result = command.validCommand("/incorrect request");
         assertTrue(result);
     }
 
     @Test
-    void validCommandHelpWithoutSlash() {
+    void validCommand_HelpWithoutSlash_False() {
         Command command = new Command();
         boolean result = command.validCommand("help");
         assertFalse(result);

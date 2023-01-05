@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class CalculateTest {
 
     @Test
-    void toInfix() {
+    void toInfix_ChangeLineToInfix_True() {
         String input = "c = 5\n(3 + c) / 2\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -24,28 +24,28 @@ class CalculateTest {
     }
 
     @Test
-    void precedence() {
+    void precedence_characterWithoutPriority() {
         Calculate calculate = new Calculate();
         int result = calculate.precedence(")");
         assertEquals(5, result);
     }
 
     @Test
-    void isNumeric() {
+    void isNumeric_checkNumberIsNumeric_True() {
         Calculate calculate = new Calculate();
         boolean result = calculate.isNumeric("5");
         assertTrue(result);
     }
 
     @Test
-    void isNotNumeric() {
+    void isNumeric_checkNumberIsNumeric_False() {
         Calculate calculate = new Calculate();
         boolean result = calculate.isNumeric("+");
         assertFalse(result);
     }
 
     @Test
-    void infixToPostfix() {
+    void infixToPostfix_transformationFromInfixToPostfix() {
         String input = "c = 5\n80 / (3 + c) / (3 - 1)\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -59,7 +59,7 @@ class CalculateTest {
     }
 
     @Test
-    void calculate() {
+    void calculate_wrightCalculating_True() {
         String input = "c = 5\n80 / (3 + c) * (3 - 1)\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -73,7 +73,7 @@ class CalculateTest {
 
     @Test
     @ExpectSystemExit
-    void calculateDividedZero() {
+    void calculate_calculateDividedZeroExitProgram() {
         String input = "2 / 0\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
